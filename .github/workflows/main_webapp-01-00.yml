@@ -24,8 +24,10 @@ jobs:
 
     - name: Restore NuGet packages
       run: nuget restore
+      working-directory: ./lorryadmindeployment
 
     - name: Publish to folder
+      working-directory: ./lorryadmindeployment
       run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
 
     - name: Upload artifact for deployment job
